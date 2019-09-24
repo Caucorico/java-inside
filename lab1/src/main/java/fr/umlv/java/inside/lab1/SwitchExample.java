@@ -1,4 +1,4 @@
-package fr.umlv.java.inside.fr.umlv.java.inside.lab1;
+package fr.umlv.java.inside.lab1;
 
 public class SwitchExample {
 
@@ -16,5 +16,13 @@ public class SwitchExample {
                 break;
         }
         return result;
+    }
+
+    static int switchExample2(String s) {
+        return switch(s) {
+            case "dog" -> 1;
+            case "cat" -> 2;
+            default -> 4;
+        };
     }
 }
