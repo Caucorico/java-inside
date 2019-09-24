@@ -28,3 +28,6 @@ hs_err_pid*
 # IntelliJ configuration :
 .idea
 *.iml
+
+# Target
+lab1/target
