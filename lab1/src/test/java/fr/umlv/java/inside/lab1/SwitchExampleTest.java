@@ -1,7 +1,8 @@
 package fr.umlv.java.inside.lab1;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class SwitchExampleTest {
 
@@ -18,5 +19,10 @@ public class SwitchExampleTest {
     @Test
     public void testDefault() {
         assertEquals(4, SwitchExample.switchExample("default"));
+    }
+
+    @Test
+    public void testFailed() {
+        fail();
     }
 }
