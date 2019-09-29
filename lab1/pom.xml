@@ -37,15 +37,12 @@
                 <configuration>
                     <release>13</release>
                     <compilerArgument>--enable-preview</compilerArgument>
-                    <source>13</source>
-                    <target>13</target>
                 </configuration>
             </plugin>
             <!-- Warn see : https://stackoverflow.com/questions/55303837/problem-running-tests-with-enabled-preview-features-in-surefire-and-failsafe -->
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
-
             </plugin>
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
