@@ -32,10 +32,12 @@ public class JsonPrinterTest {
             this.age = age;
         }
 
+        @JSONProperty
         public String getPlanet() {
             return planet;
         }
 
+        @JSONProperty
         public int getAge() {
             return age;
         }
@@ -50,9 +52,12 @@ public class JsonPrinterTest {
             this.lastName = Objects.requireNonNull(lastName);
         }
 
+        @JSONProperty
         public String getFirstName() {
             return firstName;
         }
+
+        @JSONProperty
         public String getLastName() {
             return lastName;
         }

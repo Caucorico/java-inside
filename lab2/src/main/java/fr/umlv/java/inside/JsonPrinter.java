@@ -38,7 +38,7 @@ public class JsonPrinter {
     public static String toJson(Object object) {
         return Arrays.stream(Objects.requireNonNull(object).getClass().getMethods())
                 .filter(method -> method.getName().startsWith("get"))
-                .filter(Predicate.not(method -> method.getDeclaringClass() == Object.class))
+                .filter(method -> method.isAnnotationPresent(JSONProperty.class))
                 .sorted(Comparator.comparing(Method::getName))
                 .map(method -> "\"" + propertyName(method.getName()) + "\": \"" + callGetter(object, method) + "\"")
                 .collect(joining(",\n", "{\n", "\n}"));
