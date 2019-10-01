@@ -5,7 +5,12 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.UndeclaredThrowableException;
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Objects;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.*;
 
 public class JsonPrinter {
 
@@ -22,19 +27,21 @@ public class JsonPrinter {
             var cause = e.getCause();
             if ( cause instanceof RuntimeException ) {
                 throw (RuntimeException) cause;
-            } else if ( cause instanceof Error ){
-                throw (Error) cause;
-            } else {
-                throw new UndeclaredThrowableException(cause);
             }
+            if ( cause instanceof Error ) {
+                throw (Error) cause;
+            }
+            throw new UndeclaredThrowableException(cause);
         }
     }
 
-    static public String toJson(Object object) {
-        return Arrays.stream(object.getClass().getMethods())
-                .filter( method -> method.getName().startsWith("get") )
-                .map( method -> "\"" +  propertyName(method.getName()) + "\": \"" + callGetter(object, method) + "\"")
-                .collect(Collectors.joining(",\n", "{\n", "\n}"));
+    public static String toJson(Object object) {
+        return Arrays.stream(Objects.requireNonNull(object).getClass().getMethods())
+                .filter(method -> method.getName().startsWith("get"))
+                .filter(Predicate.not(method -> method.getDeclaringClass() == Object.class))
+                .sorted(Comparator.comparing(Method::getName))
+                .map(method -> "\"" + propertyName(method.getName()) + "\": \"" + callGetter(object, method) + "\"")
+                .collect(joining(",\n", "{\n", "\n}"));
     }
 
 }
