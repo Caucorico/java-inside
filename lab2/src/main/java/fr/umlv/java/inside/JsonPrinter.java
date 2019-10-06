@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.UndeclaredThrowableException;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Map;
 import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -48,15 +49,16 @@ public class JsonPrinter {
                 .filter(method -> method.getName().startsWith("get"))
                 .filter(method -> method.isAnnotationPresent(JSONProperty.class))
                 .sorted(Comparator.comparing(Method::getName))
-                .map(method -> {
+                .map( method -> {
                     String methodName;
                     if ( !method.getAnnotation(JSONProperty.class).value().isEmpty() ) {
                         methodName = method.getAnnotation(JSONProperty.class).value();
                     } else {
                         methodName = propertyName(method.getName());
                     }
-                    return "\"" + methodName + "\": \"" + callGetter(object, method) + "\"";
+                    return Map.entry(methodName, method);
                 })
+                .map(methodTuple -> "\"" + methodTuple.getKey() + "\": \"" + callGetter(object, methodTuple.getValue()) + "\"")
                 .collect(joining(",\n", "{\n", "\n}"));
     }
 
