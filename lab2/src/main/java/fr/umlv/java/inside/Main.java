@@ -1,24 +1,14 @@
 package fr.umlv.java.inside;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.Objects;
 
-import static org.junit.jupiter.api.Assertions.*;
+public class Main {
 
-public class JsonPrinterTest {
 
-    @Test
-    public void testToJsonWithPersonShouldNotNull() {
-        var person = new Person("fn", "ln");
-        var result = JsonPrinter.toJson(person);
-        assertNotNull(result);
+    public static void main(String[] args) {
+        System.out.println(JsonPrinter.toJson(new Person("test", "test")));
     }
 
-    @Test
-    public void testToJsonWithPersonShouldThrowIllegalArgumentException() {
-        assertThrows(NullPointerException.class, () -> { JsonPrinter.toJson(null); });
-    }
 
     static class Alien {
         private final String planet;
@@ -62,5 +52,4 @@ public class JsonPrinterTest {
             return lastName;
         }
     }
-
 }
