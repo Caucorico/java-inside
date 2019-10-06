@@ -9,10 +9,18 @@ import java.util.Comparator;
 import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.*;
 
 public class JsonPrinter {
+
+    private final static ClassValue<Method[]> cache = new ClassValue<>() {
+        @Override
+        protected Method[] computeValue(Class<?> dynamicClass) {
+            return dynamicClass.getMethods();
+        }
+    };
 
     private static String propertyName(String name) {
         return Character.toLowerCase(name.charAt(3)) + name.substring(4);
@@ -36,7 +44,7 @@ public class JsonPrinter {
     }
 
     public static String toJson(Object object) {
-        return Arrays.stream(Objects.requireNonNull(object).getClass().getMethods())
+        return Arrays.stream(cache.get(Objects.requireNonNull(object.getClass())))
                 .filter(method -> method.getName().startsWith("get"))
                 .filter(method -> method.isAnnotationPresent(JSONProperty.class))
                 .sorted(Comparator.comparing(Method::getName))
