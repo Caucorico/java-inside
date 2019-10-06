@@ -40,7 +40,15 @@ public class JsonPrinter {
                 .filter(method -> method.getName().startsWith("get"))
                 .filter(method -> method.isAnnotationPresent(JSONProperty.class))
                 .sorted(Comparator.comparing(Method::getName))
-                .map(method -> "\"" + propertyName(method.getName()) + "\": \"" + callGetter(object, method) + "\"")
+                .map(method -> {
+                    String methodName;
+                    if ( !method.getAnnotation(JSONProperty.class).value().isEmpty() ) {
+                        methodName = method.getAnnotation(JSONProperty.class).value();
+                    } else {
+                        methodName = propertyName(method.getName());
+                    }
+                    return "\"" + methodName + "\": \"" + callGetter(object, method) + "\"";
+                })
                 .collect(joining(",\n", "{\n", "\n}"));
     }
 
