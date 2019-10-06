@@ -1,6 +1,16 @@
 language: java
 jdk: openjdk13
 
+os:
+  - windows
+  - osx
+  - linux
+
+env:
+  matrix:
+    - TARGET : "lab1"
+    - TARGET : "lab2"
+
 script:
-  - cd lab1
+  - cd $TARGET
   - mvn package
