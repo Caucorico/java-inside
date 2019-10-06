@@ -2,7 +2,6 @@ language: java
 jdk: openjdk13
 
 os:
-  - windows
   - osx
   - linux
 
