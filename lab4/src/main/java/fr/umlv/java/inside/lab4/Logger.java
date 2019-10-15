@@ -9,6 +9,7 @@ import java.util.function.Consumer;
 
 import static java.lang.invoke.MethodHandles.insertArguments;
 
+@FunctionalInterface
 public interface Logger {
     public void log(String message);
 
@@ -19,6 +20,7 @@ public interface Logger {
         return new Logger() {
             @Override
             public void log(String message) {
+                Objects.requireNonNull(message);
                 try {
                     mh.invokeExact(message);
                 } catch(Throwable t) {
@@ -30,6 +32,26 @@ public interface Logger {
                     }
                     throw new UndeclaredThrowableException(t);
                 }
+            }
+        };
+    }
+
+    public static Logger fastOf(Class<?> declaringClass, Consumer<? super String> consumer) {
+        Objects.requireNonNull(declaringClass);
+        Objects.requireNonNull(consumer);
+        var mh = createLoggingMethodHandle(declaringClass, consumer);
+        return (message) -> {
+            Objects.requireNonNull(message);
+            try {
+                mh.invokeExact(message);
+            } catch(Throwable t) {
+                if (t instanceof RuntimeException) {
+                    throw (RuntimeException)t;
+                }
+                if (t instanceof Error) {
+                    throw (Error)t;
+                }
+                throw new UndeclaredThrowableException(t);
             }
         };
     }
