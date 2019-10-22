@@ -3,7 +3,9 @@ package fr.umlv.java.inside.lab5;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
+import java.lang.invoke.MutableCallSite;
 import java.lang.reflect.UndeclaredThrowableException;
+import java.util.List;
 import java.util.Objects;
 
 public class StringSwitchExample {
@@ -49,6 +51,51 @@ public class StringSwitchExample {
             throw e;
         } catch (Throwable e) {
             throw new UndeclaredThrowableException(e);
+        }
+    }
+
+    public static int stringSwitch3(String s) {
+        var mh = createMHFromStrings3("foo", "bar", "bazz");
+        try {
+            return (int)mh.invokeExact(s);
+        } catch (RuntimeException | Error e) {
+            throw e;
+        } catch (Throwable e) {
+            throw new UndeclaredThrowableException(e);
+        }
+    }
+
+    public static MethodHandle createMHFromStrings3(String... matches) {
+        return new InliningCache(matches).dynamicInvoker();
+    }
+
+    static class InliningCache extends MutableCallSite {
+        private static final MethodHandle SLOW_PATH;
+        static {
+            try {
+                SLOW_PATH = MethodHandles.lookup().findVirtual(InliningCache.class, "slowPath", MethodType.methodType(int.class, String.class));
+            } catch (NoSuchMethodException | IllegalAccessException e) {
+                throw new AssertionError(e);
+            }
+        }
+
+        private final List<String> matches;
+
+        public InliningCache(String... matches) {
+            super(MethodType.methodType(int.class, String.class));
+            this.matches = List.of(matches);
+            setTarget(MethodHandles.insertArguments(SLOW_PATH, 0, this));
+        }
+
+        private int slowPath(String value) {
+            var index = matches.indexOf(value);
+            var mh = MethodHandles.guardWithTest(
+                    MethodHandles.insertArguments(STRING_EQUALS, 1, value),
+                    MethodHandles.dropArguments(MethodHandles.constant(int.class, index), 0, String.class),
+                    getTarget()
+            );
+            setTarget(mh);
+            return index;
         }
     }
 }

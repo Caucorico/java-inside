@@ -31,7 +31,8 @@ public class StringSwitchExampleTests {
     public static Stream<ToIntFunction<String>> methodsProvider() {
         return Stream.of(
                 StringSwitchExample::stringSwitch,
-                StringSwitchExample::stringSwitch2
+                StringSwitchExample::stringSwitch2,
+                StringSwitchExample::stringSwitch3
         );
     }
 }
