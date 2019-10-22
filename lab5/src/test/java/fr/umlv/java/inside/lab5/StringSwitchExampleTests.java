@@ -32,7 +32,6 @@ public class StringSwitchExampleTests {
         return Stream.of(
                 StringSwitchExample::stringSwitch,
                 StringSwitchExample::stringSwitch2
-
         );
     }
 }
