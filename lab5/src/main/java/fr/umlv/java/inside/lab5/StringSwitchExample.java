@@ -23,10 +23,8 @@ public class StringSwitchExample {
         var mh = createMHFromStrings2("foo", "bar", "bazz");
         try {
             return (Integer)mh.invokeExact(s);
-        } catch (RuntimeException e) {
-            throw (RuntimeException) e;
-        } catch ( Error e ) {
-            throw (Error) e;
+        } catch (RuntimeException | Error e) {
+            throw e;
         } catch (Throwable e) {
             throw new UndeclaredThrowableException(e);
         }
