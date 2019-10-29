@@ -11,6 +11,7 @@ env:
     - TARGET : "lab2"
     - TARGET : "lab3"
     - TARGET : "lab5"
+    - TARGET : "lab6"
 
 script:
   - cd $TARGET
