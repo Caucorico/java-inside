@@ -82,8 +82,15 @@ public class StringSwitchExample {
         private final List<String> matches;
 
         public InliningCache(String... matches) {
-            super(MethodType.methodType(int.class, String.class));
+            /*super(MethodType.methodType(int.class, String.class));
             this.matches = List.of(matches);
+            setTarget(MethodHandles.insertArguments(SLOW_PATH, 0, this));*/
+            this(List.of(matches));
+        }
+
+        private InliningCache( List<String> matches ) {
+            super(MethodType.methodType(int.class, String.class));
+            this.matches = matches;
             setTarget(MethodHandles.insertArguments(SLOW_PATH, 0, this));
         }
 
@@ -92,7 +99,7 @@ public class StringSwitchExample {
             var mh = MethodHandles.guardWithTest(
                     MethodHandles.insertArguments(STRING_EQUALS, 1, value),
                     MethodHandles.dropArguments(MethodHandles.constant(int.class, index), 0, String.class),
-                    getTarget()
+                    new InliningCache(matches).dynamicInvoker()
             );
             setTarget(mh);
             return index;
