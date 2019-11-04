@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="fr.umlv.java.inside.lab6.SchedulerTest" time="0.085" tests="7" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="14"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/home/guillaume/Documents/java-inside/lab6/target/test-classes:/home/guillaume/Documents/java-inside/lab6/target/classes:/home/guillaume/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.5.2/junit-jupiter-api-5.5.2.jar:/home/guillaume/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/home/guillaume/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/guillaume/.m2/repository/org/junit/platform/junit-platform-commons/1.5.2/junit-platform-commons-1.5.2.jar:/home/guillaume/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.5.2/junit-jupiter-engine-5.5.2.jar:/home/guillaume/.m2/repository/org/junit/platform/junit-platform-engine/1.5.2/junit-platform-engine-1.5.2.jar:/home/guillaume/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.5.2/junit-jupiter-params-5.5.2.jar:/home/guillaume/.m2/repository/org/openjdk/jmh/jmh-generator-annprocess/1.21/jmh-generator-annprocess-1.21.jar:/home/guillaume/.m2/repository/org/openjdk/jmh/jmh-core/1.21/jmh-core-1.21.jar:/home/guillaume/.m2/repository/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6.jar:/home/guillaume/.m2/repository/org/apache/commons/commons-math3/3.2/commons-math3-3.2.jar:"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://openjdk.java.net/"/>
+    <property name="os.name" value="Linux"/>
+    <property name="java.vm.specification.version" value="14"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="FR"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/jdk-14-loom/lib"/>
+    <property name="sun.java.command" value="/home/guillaume/Documents/java-inside/lab6/target/surefire/surefirebooter17548242243815754522.jar /home/guillaume/Documents/java-inside/lab6/target/surefire 2019-11-03T22-49-08_181-jvmRun1 surefire9726358899938366836tmp surefire_012225252622828175915tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/home/guillaume/Documents/java-inside/lab6/target/test-classes:/home/guillaume/Documents/java-inside/lab6/target/classes:/home/guillaume/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.5.2/junit-jupiter-api-5.5.2.jar:/home/guillaume/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/home/guillaume/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/guillaume/.m2/repository/org/junit/platform/junit-platform-commons/1.5.2/junit-platform-commons-1.5.2.jar:/home/guillaume/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.5.2/junit-jupiter-engine-5.5.2.jar:/home/guillaume/.m2/repository/org/junit/platform/junit-platform-engine/1.5.2/junit-platform-engine-1.5.2.jar:/home/guillaume/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.5.2/junit-jupiter-params-5.5.2.jar:/home/guillaume/.m2/repository/org/openjdk/jmh/jmh-generator-annprocess/1.21/jmh-generator-annprocess-1.21.jar:/home/guillaume/.m2/repository/org/openjdk/jmh/jmh-core/1.21/jmh-core-1.21.jar:/home/guillaume/.m2/repository/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6.jar:/home/guillaume/.m2/repository/org/apache/commons/commons-math3/3.2/commons-math3-3.2.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/home/guillaume"/>
+    <property name="user.language" value="fr"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2020-03-17"/>
+    <property name="java.home" value="/usr/lib/jvm/jdk-14-loom"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/home/guillaume/Documents/java-inside/lab6"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="idea.version2019.2.3" value="true"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="/home/guillaume/Documents/java-inside/lab6/target/surefire/surefirebooter17548242243815754522.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="14-loom+0-jdk-149-56834-g1b82fd67db"/>
+    <property name="user.name" value="guillaume"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="4.9.196-1-MANJARO"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="localRepository" value="/home/guillaume/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="java.version" value="14-loom"/>
+    <property name="user.dir" value="/home/guillaume/Documents/java-inside/lab6"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="N/A"/>
+    <property name="java.vm.version" value="14-loom+0-jdk-149-56834-g1b82fd67db"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="58.0"/>
+  </properties>
+  <testcase name="testEnqueueShouldNotAcceptNull{Mode}[1]" classname="fr.umlv.java.inside.lab6.SchedulerTest" time="0.032"/>
+  <testcase name="testEnqueueShouldNotAcceptNull{Mode}[2]" classname="fr.umlv.java.inside.lab6.SchedulerTest" time="0.001"/>
+  <testcase name="testEnqueueShouldNotAcceptNull{Mode}[3]" classname="fr.umlv.java.inside.lab6.SchedulerTest" time="0.001"/>
+  <testcase name="schedulerSTACKOrderOk" classname="fr.umlv.java.inside.lab6.SchedulerTest" time="0.005"/>
+  <testcase name="testSchedulerConstructorShouldNotAcceptNull" classname="fr.umlv.java.inside.lab6.SchedulerTest" time="0.001"/>
+  <testcase name="schedulerRANDOMOk" classname="fr.umlv.java.inside.lab6.SchedulerTest" time="0.005"/>
+  <testcase name="schedulerFIFOOrderOk" classname="fr.umlv.java.inside.lab6.SchedulerTest" time="0.002"/>
+</testsuite>

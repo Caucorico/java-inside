@@ -11,7 +11,8 @@ env:
     - TARGET : "lab2"
     - TARGET : "lab3"
     - TARGET : "lab5"
+    - TARGET : "lab6"
 
 script:
-  - cd $TARGET
-  - mvn package
+  - chmod u+x travis-init.sh 
+  - ./travis-init.sh
